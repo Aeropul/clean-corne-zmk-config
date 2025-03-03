@@ -16,20 +16,12 @@
 #define PAD 4
 #define META 5
 
-&sk {
-	release-after-ms = <5000>;
-	};
-	
-&sl {
-	release-after-ms = <5000>;
-	};
-
 / {
 	conditional_layers {
 		compatible = "zmk,conditional-layers";
 		tri_layer {
-			if-layers = <NUM PAD>;
-			then-layer = <META>;
+			if-layers = <2 4;
+			then-layer = <5>;
 		};
 	};
 	
@@ -45,10 +37,10 @@
 
                         display-name = "Base";
                         bindings = <
-	&gresc    &kp Q     &kp W   &kp E   &kp R   &kp T       					&kp Y    &kp U   &kp I &kp O     &kp P     &caps_word
-	&sk LALT  &kp A     &kp S   &kp D   &kp F   &kp G       					&kp H    &kp J   &kp K &kp L     &kp Z     &sk RALT
-	&sk LCTRL &sk LSHFT &kp TAB &kp C   &kp V   &kp B       					&kp N    &kp M   &kp X &kp ENTER &sk RSHFT &sk RCTRL
-                                &sl PAD &sl NAV &kp SPACE						&kp BSPC &sl SYM &sl NUM
+	&gresc    &kp Q     &kp W   &kp E   &kp R   &kp T     &kp Y    &kp U   &kp I &kp O     &kp P     &CLCK
+	&kp LALT  &kp A     &kp S   &kp D   &kp F   &kp G     &kp H    &kp J   &kp K &kp L     &kp Z     &kp RALT
+	&kp LCTRL &kp LSHFT &kp TAB &kp C   &kp V   &kp B     &kp N    &kp M   &kp X &kp ENTER &kp RSHFT &kp RCTRL
+                                &mo PAD &mo NAV &kp SPACE &kp BSPC &mo SYM &mo NUM
                         >;
                 };
 				
@@ -61,10 +53,10 @@
 
                         display-name = "Sym";
                         bindings = <
-    &kp F1 &kp F2    &kp F3  &kp F4    &kp F5    &kp F6      					&kp F7   &kp F8    &kp F9  &kp F10  &kp F11  &kp F12
-	&trans &kp COMMA &kp DOT &kp MINUS &kp EQUAL &kp SEMI    					&kp BSLH &kp FSLH  &kp SQT &kp LBKT &kp RBKT &trans
-	&trans &kp LT    &kp GT  &kp UNDER &kp PLUS  &kp COLON						&kp PIPE &kp QMARK &kp DQT &kp LBRC &kp RBRC &trans
-                             &trans    &kp LGUI  &trans							&trans   &trans    &trans
+    &kp F1 &kp F2    &kp F3  &kp F4    &kp F5    &kp F6    &kp F7   &kp F8    &kp F9  &kp F10  &kp F11  &kp F12
+	&trans &kp COMMA &kp DOT &kp MINUS &kp EQUAL &kp SEMI  &kp BSLH &kp FSLH  &kp SQT &kp LBKT &kp RBKT &trans
+	&trans &kp LT    &kp GT  &kp UNDER &kp PLUS  &kp COLON &kp PIPE &kp QMARK &kp DQT &kp LBRC &kp RBRC &trans
+                             &trans    &kp LGUI  &trans	   &trans   &trans    &trans
                         >;
                 };
 
@@ -77,10 +69,10 @@
 
                         display-name = "Num";
                         bindings = <
-    &kp F13 &kp F14  &kp F15 &kp F16  &kp F17  &kp F18   						&kp F19   &kp F20  &kp F21  &kp F22  &kp F23  &kp F24
-	&trans  &kp N1   &kp N2  &kp N3   &kp N4   &kp N5    						&kp N6    &kp N7   &kp N8   &kp N9   &kp N0   &trans
-	&trans  &kp EXCL &kp AT  &kp HASH &kp DLLR &kp PRCNT 						&kp CARET &kp AMPS &kp STAR &kp LPAR &kp RPAR &trans
-                             &trans   &trans   &trans	   						&trans    &trans   &trans
+    &kp F13 &kp F14  &kp F15 &kp F16  &kp F17  &kp F18   &kp F19   &kp F20  &kp F21  &kp F22  &kp F23  &kp F24
+	&trans  &kp N1   &kp N2  &kp N3   &kp N4   &kp N5    &kp N6    &kp N7   &kp N8   &kp N9   &kp N0   &trans
+	&trans  &kp EXCL &kp AT  &kp HASH &kp DLLR &kp PRCNT &kp CARET &kp AMPS &kp STAR &kp LPAR &kp RPAR &trans
+                             &trans   &trans   &trans	 &trans    &trans   &trans
                         >;
                 };
 				
@@ -93,10 +85,10 @@
 
                         display-name = "Nav";
                         bindings = <
-    &kp F1 &kp F2   &kp F3    &kp F4    &kp F5    &kp F6     					&kp F7    &kp F8       &kp F9     &kp F10      &kp F11      &kp F12
-	&trans &kp LEFT &kp UP    &kp DOWN  &kp RIGHT &kp DEL    					&kp PSCRN &kp C_PREV   &kp C_PP   &kp C_NEXT   &kp C_BRI_UP &trans
-	&trans &kp HOME &kp PG_UP &kp PG_DN &kp END   &kp INS						&kp SLCK  &kp C_VOL_DN &kp C_MUTE &kp C_VOL_UP &kp C_BRI_DN &trans
-                              &trans    &trans    &trans						&trans    &kp RGUI     &trans
+    &kp F1 &kp F2   &kp F3    &kp F4    &kp F5    &kp F6  &kp F7    &kp F8       &kp F9     &kp F10      &kp F11      &kp F12
+	&trans &kp LEFT &kp UP    &kp DOWN  &kp RIGHT &kp DEL &kp PSCRN &kp C_PREV   &kp C_PP   &kp C_NEXT   &kp C_BRI_UP &trans
+	&trans &kp HOME &kp PG_UP &kp PG_DN &kp END   &kp INS &kp SLCK  &kp C_VOL_DN &kp C_MUTE &kp C_VOL_UP &kp C_BRI_DN &trans
+                              &trans    &trans    &trans  &trans    &kp RGUI     &trans
                         >;				
                 };
 				
@@ -109,10 +101,10 @@
 
                         display-name = "Pad";
                         bindings = <
-    &kp F13 &kp F14   &kp F15    &kp F16      &kp F17     &kp F18   		    &kp F19     &kp F20      &kp F21         &kp F22      &kp F23   &kp F24
-	&trans  &kp KP_N1 &kp KP_N2  &kp KP_N3    &kp KP_N4   &kp KP_N5           	&kp KP_N6   &kp KP_N7    &kp KP_N8       &kp KP_N9    &kp KP_N0 &trans
-	&trans  &kp COMMA &kp KP_DOT &kp KP_MINUS &kp KP_PLUS &kp PAUSE_BREAK		&kp KP_NLCK &kp KP_SLASH &kp KP_ASTERISK &kp KP_ENTER &kp TILDE &trans
-								 &trans       &trans      &trans	   			&trans       &trans          &trans
+    &kp F13 &kp F14   &kp F15    &kp F16      &kp F17     &kp F18   	  &kp F19     &kp F20      &kp F21         &kp F22      &kp F23   &kp F24
+	&trans  &kp KP_N1 &kp KP_N2  &kp KP_N3    &kp KP_N4   &kp KP_N5       &kp KP_N6   &kp KP_N7    &kp KP_N8       &kp KP_N9    &kp KP_N0 &trans
+	&trans  &kp COMMA &kp KP_DOT &kp KP_MINUS &kp KP_PLUS &kp PAUSE_BREAK &kp KP_NLCK &kp KP_SLASH &kp KP_ASTERISK &kp KP_ENTER &kp TILDE &trans
+								 &trans       &trans      &trans	   	  &trans      &trans       &trans
                         >;
                 };
 								
@@ -125,10 +117,10 @@
 
                         display-name = "Meta";
                         bindings = <
-    &none &none        &none        &none        &none        &none             &none        &none    &none    &none    &none    &none 
-    &none &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4      &tog META    &tog PAD &tog NAV &tog NUM &tog SYM &none
-    &none &none        &none        &none        &none        &none   		    &none        &none    &none    &none    &none    &none
-                    	            &trans       &none        &bt BT_CLR   		&out OUT_TOG &none    &trans
+    &none &none        &none        &none        &none        &none        &none        &none    &none    &none    &none    &none 
+    &none &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &tog META    &tog PAD &tog NAV &tog NUM &tog SYM &none
+    &none &none        &none        &none        &none        &none   	   &none        &none    &none    &none    &none    &none
+                    	            &trans       &none        &bt BT_CLR   &out OUT_TOG &none    &trans
                         >;
 				};
         };
