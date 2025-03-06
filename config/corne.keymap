@@ -18,7 +18,7 @@
             quick-tap-ms = <0>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
-        };		
+        };			
 		sbs: space_backspace {
              compatible = "zmk,behavior-mod-morph";
              #binding-cells = <0>;
@@ -34,9 +34,9 @@
 #define NAV 3
 #define FUN 4
 #define META 5
-#define GAME 6
-#define GAMEA 7
-#define GAMEB 8
+#define BGAME 6
+#define NGAME 7
+#define FGAME 8
 
 / {
         keymap {
@@ -51,7 +51,6 @@
     &lt NAV ESC &lt NUM TAB &hm LSHFT SPACE &hm RSHFT BSPC &lt SYM BSPC &lt FUN RET
                         >;
                 };
-				
                 number_layer {
                         display-name = "Num";
                         bindings = <
@@ -61,7 +60,6 @@
                              &trans    &kp LGUI  &trans	   &trans   &trans    &trans
                         >;
                 };
-
                 symbol_layer {
                         display-name = "Sym";
                         bindings = <
@@ -71,7 +69,6 @@
                              &trans   &trans   &trans	 &trans    &trans   &trans
                         >;
                 };
-				
 				navigation_layer {
                         display-name = "Nav";
                         bindings = <
@@ -81,17 +78,15 @@
                               &trans    &trans    &trans  &trans    &kp RGUI     &trans
                         >;				
                 };
-				
-				numpad_layer {
-                        display-name = "Pad";
+				function_layer {
+                        display-name = "Fun";
                         bindings = <
     &kp F13 &kp F14   &kp F15    &kp F16      &kp F17     &kp F18   	  &kp F19     &kp F20      &kp F21         &kp F22      &kp F23   &kp F24
 	&trans  &kp KP_N1 &kp KP_N2  &kp KP_N3    &kp KP_N4   &kp KP_N5       &kp KP_N6   &kp KP_N7    &kp KP_N8       &kp KP_N9    &kp KP_N0 &trans
 	&trans  &kp COMMA &kp KP_DOT &kp KP_MINUS &kp KP_PLUS &kp PAUSE_BREAK &kp KP_NLCK &kp KP_SLASH &kp KP_ASTERISK &kp KP_ENTER &kp TILDE &trans
 								 &trans       &trans      &trans	   	  &trans      &trans       &trans
                         >;
-                };
-								
+                };				
 				meta_layer {
                         display-name = "Meta";
                         bindings = <
@@ -101,6 +96,32 @@
                     	            &trans       &none        &bt BT_CLR   &out OUT_TOG &none    &trans
                         >;
 				};
-				
+				game_base_layer {
+                        display-name = "Game";
+                        bindings = <
+    &none &none        &none        &none        &none        &none        &none        &none    &none    &none    &none    &none 
+    &none &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &tog META    &tog PAD &tog NAV &tog NUM &tog SYM &none
+    &none &none        &none        &none        &none        &none   	   &none        &none    &none    &none    &none    &none
+                    	            &trans       &none        &bt BT_CLR   &out OUT_TOG &none    &trans
+                        >;
+				};
+				game_number_layer {
+                        display-name = "Meta";
+                        bindings = <
+    &none &none        &none        &none        &none        &none        &none        &none    &none    &none    &none    &none 
+    &none &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &tog META    &tog PAD &tog NAV &tog NUM &tog SYM &none
+    &none &none        &none        &none        &none        &none   	   &none        &none    &none    &none    &none    &none
+                    	            &trans       &none        &bt BT_CLR   &out OUT_TOG &none    &trans
+                        >;
+				};
+				game_function_layer {
+                        display-name = "Meta";
+                        bindings = <
+    &none &none        &none        &none        &none        &none        &none        &none    &none    &none    &none    &none 
+    &none &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &tog META    &tog PAD &tog NAV &tog NUM &tog SYM &none
+    &none &none        &none        &none        &none        &none   	   &none        &none    &none    &none    &none    &none
+                    	            &trans       &none        &bt BT_CLR   &out OUT_TOG &none    &trans
+                        >;
+				};	
         };
 };
