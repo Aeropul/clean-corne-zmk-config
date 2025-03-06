@@ -26,6 +26,7 @@
              mods = <(MOD_RSFT)>;
         };
     };
+};
 
 #define BASE 0
 #define NUM 1
