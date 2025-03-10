@@ -79,79 +79,92 @@
 			require-prior-idle-ms = <100>;
 			key-positions = <38 39>;
 			bindings = <&BSPC>;
-		};		
+		};
+		compatible = "zmk,combos";	
 		combo_to_base_layer {
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
 			key-positions = <13 14 15 16>;
 			bindings = <&to BASE>;
 		};
+		compatible = "zmk,combos";
 		combo_to_game_layer {
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
 			key-positions = <3 14 16 25>;
 			bindings = <&to GAME>;
 		};
+		compatible = "zmk,combos";
 		combo_copy {
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
 			key-positions = <2 4>;
 			bindings = <&copy>;
 		};
+		compatible = "zmk,combos";
 		combo_paste {
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
 			key-positions = <14 16>;
 			bindings = <&paste>;
 		};
+		compatible = "zmk,combos";
 		combo_cut {
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
 			key-positions = <26 28>;
 			bindings = <&cut>;
 		};
+		compatible = "zmk,combos";
 		combo_undo {
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
 			key-positions = <13 16>;
 			bindings = <&undo>;
 		};
+		compatible = "zmk,combos";
 		combo_redo {
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
 			key-positions = <19 22>;
 			bindings = <&redo>;
 		};
+		compatible = "zmk,combos";
 		combo_enter {
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
 			key-positions = <7 9>;
 			bindings = <&kp RET>;
 		};
+		compatible = "zmk,combos";
 		combo_tab {
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
 			key-positions = <19 21>;
 			bindings = <&kp TAB>;
 		};
+		compatible = "zmk,combos";
 		combo_escape {
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
 			key-positions = <31 33>;
 			bindings = <&kp ESC>;
 		};
+		compatible = "zmk,combos";
 		combo_parles {
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
 			key-positions = <31 33>;
 			bindings = <&kp LPAR>;
 		};
+		compatible = "zmk,combos";
 		combo_pargre {
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
 			key-positions = <31 33>;
 			bindings = <RPAR>;
 		};
+		compatible = "zmk,combos";
 		combo_hyphen {
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
