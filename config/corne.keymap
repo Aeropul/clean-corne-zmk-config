@@ -3,6 +3,7 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/pointing.h>
 
 
 #define BASE 0
@@ -252,9 +253,9 @@
 				navigation_layer {
                         display-name = "Nav";
                         bindings = <
-	___  XXX &kp PG_UP &kp UP &kp PG_DN XXX XXX &msc SCRL_UP &mmv MOVE_UP &msc SCRL_DOWN XXX ___
-	___  &kp HOME &kp LEFT &kp DOWN &kp RIGHT &kp END &msc SCRL_LEFT &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &msc SCRL_RIGHT ___
-	___  XXX &mkp MB4 &kp DEL &mkp MB5 XXX XXX &mkp MB1 &mkp MB3 &mkp MB3 XXX ___
+	___ XXX &kp PG_UP &kp UP &kp PG_DN XXX XXX &msc SCRL_UP &mmv MOVE_UP &msc SCRL_DOWN XXX ___
+	___ &kp HOME &kp LEFT &kp DOWN &kp RIGHT &kp END &msc SCRL_LEFT &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &msc SCRL_RIGHT ___
+	___ XXX &mkp MB4 &kp DEL &mkp MB5 XXX XXX &mkp MB1 &mkp MB3 &mkp MB3 XXX ___
 	___ &kp LGUI ___ ___ ___ ___
                         >;
                 };				
