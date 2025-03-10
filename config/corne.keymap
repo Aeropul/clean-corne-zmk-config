@@ -73,13 +73,6 @@
 	};
 		
 	combos {
-		compatible = "zmk,combos";
-		combo_backspace {
-			timeout-ms = <50>;
-			require-prior-idle-ms = <100>;
-			key-positions = <38 39>;
-			bindings = <&kp BSPC>;
-		};
 		compatible = "zmk,combos";	
 		combo_to_base_layer {
 			timeout-ms = <50>;
@@ -93,6 +86,13 @@
 			require-prior-idle-ms = <100>;
 			key-positions = <3 14 16 25>;
 			bindings = <&to GAME>;
+		};
+		compatible = "zmk,combos";
+		combo_backspace {
+			timeout-ms = <50>;
+			require-prior-idle-ms = <100>;
+			key-positions = <38 39>;
+			bindings = <&kp BSPC>;
 		};
 		compatible = "zmk,combos";
 		combo_copy {
@@ -154,15 +154,15 @@
 		combo_parles {
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
-			key-positions = <31 33>;
+			key-positions = <15 16>;
 			bindings = <&kp LPAR>;
 		};
 		compatible = "zmk,combos";
 		combo_pargre {
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
-			key-positions = <31 33>;
-			bindings = <RPAR>;
+			key-positions = <19 20>;
+			bindings = <&kp RPAR>;
 		};
 		compatible = "zmk,combos";
 		combo_hyphen {
