@@ -1,7 +1,9 @@
 #include <behaviors.dtsi>
+#include <behaviors/num_word.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
+
 
 #define BASE 0
 #define NUM 1
@@ -25,22 +27,22 @@
 	conditional_layers {
 		compatible = "zmk,conditional-layers";
 		tri_layer {
-			if-layers = <NAV MAC>;
+			if-layers = <FUN MAC>;
 			then-layer = <SYS>;
         };
     };
 
 	behaviors {
+		nav_word: nav_word {
+			compatible = "zmk,behavior-auto-layer";
+			#binding-cells = <1>;
+			continue-list = <LEFT DOWN UP RIGHT PG_DN PG_UP HOME END>;
+			ignore-modifiers;
+		};
 		shicap: stickyshift_capsword {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&sk LSHFT>, <&caps_word>;
-            mods = <MOD_LSFT>;
-        };
-		spabac: space_backspace {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp SPACE>, <&kp BSPC>;
             mods = <MOD_LSFT>;
         };
 		comsem: comma_semicolon {
@@ -233,53 +235,53 @@
                         display-name = "Base";
                         bindings = <
 	&kp LALT &kp Q &kp W &kp E &kp R &kp T &kp Y &kp U &kp I &kp O &kp P &kp RALT
-	&sk LSHFT &kp A &kp S &kp D &kp F &kp G &kp H &kp J &kp K &kp L &kp SQT &sk RSHFT
+	&kp BSPC &kp A &kp S &kp D &kp F &kp G &kp H &kp J &kp K &kp L &kp SQT &kp BSPC
 	&kp LCTRL &kp Z &kp X &kp C &kp V &kp B &kp N &kp M &comsem &dotcol &queexc &kp RCTRL
-    &mo NAV &mo NUM &shicap &spabac &mo FUN &mo MAC
+    &sl FUN &num_word NUM &shicap &kp SPACE &nav_word NAV &sl MAC
                         >;
                 };
 				number_layer {
                         display-name = "Num";
                         bindings = <
-	___ XXX &kp N1 &kp N2 &kp N3 XXX XXX &kp KP_N1 &kp KP_N2 &kp KP_N3 XXX ___
-	___ &kp N0 &kp N4 &kp N5 &kp N6 XXX XXX &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp KP_N0 ___
-	___ XXX &kp N7 &kp N8 &kp N9 XXX XXX &kp KP_N7 &kp KP_N8 &kp KP_N9 XXX ___
+	___ XXX &kp N1 &kp N2 &kp N3 &kp KP_MINUS &kp KP_PLUS &kp KP_N1 &kp KP_N2 &kp KP_N3 XXX ___
+	___ &kp N0 &kp N4 &kp N5 &kp N6 &kp KP_ENTER &kp KP_DOT &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp KP_N0 ___
+	___ XXX &kp N7 &kp N8 &kp N9 &kp KP_SLASH &kp KP_MULTIPLY &kp KP_N7 &kp KP_N8 &kp KP_N9 XXX ___
 	___ ___ ___ ___ &kp RGUI ___
                         >;				
                 };
 				navigation_layer {
                         display-name = "Nav";
                         bindings = <
-	___ &kp F1 &kp F2 &kp F3 &kp F4 &kp C_NEXT &kp C_VOL_UP &kp F13 &kp F14 &kp F15 &kp F16 ___
-	___ &kp F5 &kp F6 &kp F7 &kp F8 &kp C_PP &kp C_MUTE &kp F17 &kp F18 &kp F19 &kp F20 ___
-	___ &kp F9 &kp F10 &kp F11 &kp F12 &kp C_PREV &kp C_VOL_DN &kp F21 &kp F22 &kp F23 &kp F24 ___
-	___ ___ ___ ___ ___ ___
+	___  XXX &kp PG_UP &kp UP &kp PG_DN XXX XXX &msc SCRL_UP &mmv MOVE_UP &msc SCRL_DOWN XXX ___
+	___  &kp HOME &kp LEFT &kp DOWN &kp RIGHT &kp END &msc SCRL_LEFT &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &msc SCRL_RIGHT ___
+	___  XXX &mkp MB4 &kp DEL &mkp MB5 XXX XXX &mkp MB1 &mkp MB3 &mkp MB3 XXX ___
+	___ &kp LGUI ___ ___ ___ ___
                         >;
                 };				
 				function_layer {
                         display-name = "Fun";
                         bindings = <
-	___ XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX ___ 
-	___ &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 XXX XXX &bt BT_SEL 4 &out OUT_BLE &out OUT_USB &bt BT_CLR ___
-	___ XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX ___
-	___ &kp LGUI ___ ___ ___ ___
+	___ &kp F1 &kp F2 &kp F3 &kp F4 XXX XXX &kp F13 &kp F14 &kp F15 &kp F16 ___ 
+	___ &kp F5 &kp F6 &kp F7 &kp F8 XXX XXX &kp F17 &kp F18 &kp F19 &kp F20 ___
+	___ &kp F9 &kp F10 &kp F11 &kp F12 XXX XXX &kp F21 &kp F22 &kp F23 &kp F24 ___
+	___ ___ ___ ___ ___ ___
                         >;
 				};
 				macro_layer {
                         display-name = "Mac";
                         bindings = <
-	___ &kp LALT &kp Q &kp S &kp E &kp R &kp Y &kp U &kp I &kp O &kp P ___
-	___ &kp LSHFT &kp A &kp W &kp D &kp F &kp H &kp J &kp K &kp L &kp SEMI ___
-	___ &kp LCTRL &kp Z &kp X &kp C &kp V &kp N &kp M &kp COMMA &kp DOT &kp FSLH ___
-	___ ___ ___ ___ ___ ___
+	___ XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX ___
+	___ XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX ___
+	___ XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX ___
+	___ XXX XXX XXX XXX ___
                         >;
 				};
 				system_layer {
                         display-name = "Sys";
                         bindings = <
-	___ &kp N1 &kp N2 &kp DOWN &kp N3 &kp N4 XXX XXX XXX XXX XXX ___
-	___ &kp RET &kp LEFT &kp UP &kp RIGHT &kp N5 XXX XXX XXX XXX XXX ___
-	___ &kp N0 &kp N9 &kp N8 &kp N7 &kp N6 XXX XXX XXX XXX XXX ___
+	___ XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX ___
+	___ &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 XXX XXX &bt BT_SEL 4 &out OUT_BLE &out OUT_USB &bt BT_CLR ___
+	___ XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX ___
 	___ XXX XXX XXX XXX ___
                         >;
 				};
