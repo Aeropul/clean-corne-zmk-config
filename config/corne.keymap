@@ -16,6 +16,10 @@
 #define ___ &trans
 	
 / {
+	&sk {
+		quick-release;
+	};
+
 	conditional_layers {
 		compatible = "zmk,conditional-layers";
 		tri_layer {
@@ -25,6 +29,18 @@
     };
 
 	behaviors {
+		shicap: stickyshift_capsword {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&sk LSHFT>, <&caps_word>;
+            mods = <MOD_LSFT>;
+        };
+		spabac: space_backspace {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp SPACE>, <&kp BSPC>;
+            mods = <MOD_LSFT>;
+        };
 		comsem: comma_semicolon {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
@@ -214,10 +230,10 @@
                 base_layer {
                         display-name = "Base";
                         bindings = <
-	&kp LCTRL &kp Q &kp W &kp E &kp R &kp T &kp Y &kp U &kp I &kp O &kp P &kp RCTRL
-	&kp LALT &kp A &kp S &kp D &kp F &kp G &kp H &kp J &kp K &kp L &kp SQT &kp RALT
-	&kp LSHFT &kp Z &kp X &kp C &kp V &kp B &kp N &kp M &comsem &dotcol &queexc &kp RSHFT
-    &mo NAV &mo NUM &key_repeat &kp SPACE &mo FUN &mo MAC
+	&kp LALT &kp Q &kp W &kp E &kp R &kp T &kp Y &kp U &kp I &kp O &kp P &kp RALT
+	&sk LSHFT &kp A &kp S &kp D &kp F &kp G &kp H &kp J &kp K &kp L &kp SQT &sk RSHFT
+	&kp LCTRL &kp Z &kp X &kp C &kp V &kp B &kp N &kp M &comsem &dotcol &queexc &kp RCTRL
+    &mo NAV &mo NUM &shicap &spabac &mo FUN &mo MAC
                         >;
                 };
 				number_layer {
