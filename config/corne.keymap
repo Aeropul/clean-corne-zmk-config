@@ -23,55 +23,40 @@
 			then-layer = <SYS>;
         };
     };
-	
-    macros {
-        copy: copy {
-            compatible = "zmk,behavior-macro";
+
+	behaviors {
+		comsem: comma_semicolon {
+            compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LCTRL>
-                , <&macro_tap &kp C>
-                , <&macro_release &kp LCTRL>
-                ;
+            bindings = <&kp COMMA>, <&kp SEMI>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
         };
-        paste: paste {
-            compatible = "zmk,behavior-macro";
+		dotcol: dot_colon {
+            compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LCTRL>
-                , <&macro_tap &kp V>
-                , <&macro_release &kp LCTRL>
-                ;
+            bindings = <&kp DOT>, <&kp COLON>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
         };
-        cut: cut {
-            compatible = "zmk,behavior-macro";
+		queexc: question_exclamation {
+            compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LCTRL>
-                , <&macro_tap &kp X>
-                , <&macro_release &kp LCTRL>
-                ;
-        };	
-        undo: undo {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LCTRL>
-                , <&macro_tap &kp Z>
-                , <&macro_release &kp LCTRL>
-                ;
+            bindings = <&kp QMARK>, <&kp EXCL>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
         };
-        redo: redo {
-            compatible = "zmk,behavior-macro";
+		parles: leftparenthesis_lessthan {
+            compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LCTRL>
-                , <&macro_tap &kp Y>
-                , <&macro_release &kp LCTRL>
-                ;
+            bindings = <&kp LPAR>, <&kp LT>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
         };
-	};
-		
+		pargre: rightparenthesis_greaterthan {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp RPAR>, <&kp GT>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+    };
+
 	combos {
 		compatible = "zmk,combos";	
 		combo_to_base_layer {
@@ -155,14 +140,14 @@
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
 			key-positions = <15 16>;
-			bindings = <&kp LPAR>;
+			bindings = <&parles>;
 		};
 		compatible = "zmk,combos";
 		combo_pargre {
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
 			key-positions = <19 20>;
-			bindings = <&kp RPAR>;
+			bindings = <&pagre>;
 		};
 		compatible = "zmk,combos";
 		combo_hyphen {
@@ -173,38 +158,53 @@
 		};
 	};
 	
-	behaviors {
-		comsem: comma_semicolon {
-            compatible = "zmk,behavior-mod-morph";
+    macros {
+        copy: CTRL_C {
+            compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp COMMA>, <&kp SEMI>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp C>
+                , <&macro_release &kp LCTRL>
+                ;
         };
-		dotcol: dot_colon {
-            compatible = "zmk,behavior-mod-morph";
+        paste: CTRL_V {
+            compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp DOT>, <&kp COLON>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp V>
+                , <&macro_release &kp LCTRL>
+                ;
         };
-		queexc: question_exclamation {
-            compatible = "zmk,behavior-mod-morph";
+        cut: CTRL_X {
+            compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp QMARK>, <&kp EXCL>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-		parles: leftparenthesis_lessthan {
-            compatible = "zmk,behavior-mod-morph";
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp X>
+                , <&macro_release &kp LCTRL>
+                ;
+        };	
+        undo: CTRL_Z {
+            compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LPAR>, <&kp LT>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp Z>
+                , <&macro_release &kp LCTRL>
+                ;
         };
-		pargre: rightparenthesis_greaterthan {
-            compatible = "zmk,behavior-mod-morph";
+        redo: CTRL_Y {
+            compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp RPAR>, <&kp GT>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp Y>
+                , <&macro_release &kp LCTRL>
+                ;
         };
-    };
+	};
 };
 
 / {
@@ -216,7 +216,7 @@
                         bindings = <
 	&kp LCTRL &kp Q &kp W &kp E &kp R &kp T &kp Y &kp U &kp I &kp O &kp P &kp RCTRL
 	&kp LALT &kp A &kp S &kp D &kp F &kp G &kp H &kp J &kp K &kp L &kp SQT &kp RALT
-	&kp LSHFT &kp Z &kp X &kp C &kp V &kp B &kp N &kp M &kp COMMA &kp DOT &kp QMARK &kp RSHFT
+	&kp LSHFT &kp Z &kp X &kp C &kp V &kp B &kp N &kp M &comsem &dotcol &queexc &kp RSHFT
     &mo NAV &mo NUM &key_repeat &kp SPACE &mo FUN &mo MAC
                         >;
                 };
