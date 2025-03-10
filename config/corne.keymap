@@ -147,7 +147,7 @@
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
 			key-positions = <19 20>;
-			bindings = <&pagre>;
+			bindings = <&pargre>;
 		};
 		compatible = "zmk,combos";
 		combo_hyphen {
