@@ -14,14 +14,14 @@
 
 #define XXX &none
 #define ___ &trans
+
+&sk {
+	release-after-ms = <1000>;
+	quick-release;
+	ignore-modifiers;
+};
 	
 / {
-	&sk {
-		release-after-ms = <1000>;
-		quick-release;
-		ignore-modifiers;
-	};
-
 	conditional_layers {
 		compatible = "zmk,conditional-layers";
 		tri_layer {
