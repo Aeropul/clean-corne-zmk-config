@@ -90,6 +90,99 @@
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
     };
+	
+    macros {
+        copy: CTRL_C {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp C>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
+        paste: CTRL_V {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp V>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
+        cut: CTRL_X {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp X>
+                , <&macro_release &kp LCTRL>
+                ;
+        };	
+        undo: CTRL_Z {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp Z>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
+        find: CTRL_F {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp F>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
+        redo: CTRL_Y {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp Y>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
+        top_doc: CTRL_HOME {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp HOME>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
+		bottom_doc: CTRL_END {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp END>
+                , <&macro_release &kp LCTRL>
+                ;
+		};
+		prev_word: CTRL_LEFT {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp LEFT>
+                , <&macro_release &kp LCTRL>
+                ;
+		};
+		next_word: CTRL_RIGHT {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp RIGHT>
+                , <&macro_release &kp LCTRL>
+                ;
+		};
+	};
 
 	combos {
 		compatible = "zmk,combos";	
@@ -150,99 +243,6 @@
 			bindings = <&redo>;
 		};
 	};
-	
-    macros {
-        copy: CTRL_C {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LCTRL>
-                , <&macro_tap &kp C>
-                , <&macro_release &kp LCTRL>
-                ;
-        };
-        paste: CTRL_V {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LCTRL>
-                , <&macro_tap &kp V>
-                , <&macro_release &kp LCTRL>
-                ;
-        };
-        cut: CTRL_X {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LCTRL>
-                , <&macro_tap &kp X>
-                , <&macro_release &kp LCTRL>
-                ;
-        };	
-        undo: CTRL_Z {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LCTRL>
-                , <&macro_tap &kp Z>
-                , <&macro_release &kp LCTRL>
-                ;
-        };
-        find: CTRL_F {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LCTRL>
-                , <&macro_tap &kp F>
-                , <&macro_release &kp LCTRL>
-                ;
-        };
-        redo: CTRL_Y {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LCTRL>
-                , <&macro_tap &kp Y>
-                , <&macro_release &kp LCTRL>
-                ;
-        };
-        top: CTRL_HOME {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LCTRL>
-                , <&macro_tap &kp HOME>
-                , <&macro_release &kp LCTRL>
-                ;
-        };
-		bottom: CTRL_END {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LCTRL>
-                , <&macro_tap &kp END>
-                , <&macro_release &kp LCTRL>
-                ;
-		};
-		prev_word: CTRL_LEFT {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LCTRL>
-                , <&macro_tap &kp LEFT>
-                , <&macro_release &kp LCTRL>
-                ;
-		};
-		next_word: CTRL_RIGHT {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LCTRL>
-                , <&macro_tap &kp RIGHT>
-                , <&macro_release &kp LCTRL>
-                ;
-		};
-	};
 };
 
 / {
@@ -271,7 +271,7 @@
                         bindings = <
 	___ XXX &kp PG_UP &kp UP &kp PG_DN XXX XXX &msc SCRL_UP &mmv MOVE_UP &msc SCRL_DOWN XXX ___
 	___ &kp HOME &kp LEFT &kp DOWN &kp RIGHT &kp END &msc SCRL_LEFT &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &msc SCRL_RIGHT ___
-	___ &top &prev_word &kp PSCRN &next_word &bottom &mkp MB4 &mkp MB1 &mkp MB3 &mkp MB2 &mkp MB5 ___
+	___ &top_doc &prev_word &kp PSCRN &next_word &bottom_doc &mkp MB4 &mkp MB1 &mkp MB3 &mkp MB2 &mkp MB5 ___
 	___ ___ ___ ___ ___ &mo SYS
                         >;
                 };				
