@@ -85,7 +85,7 @@
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
 			key-positions = <13 14 15 16>;
-			layers = <GAME>
+			layers = <GAME>;
 			bindings = <&to BASE>;
 		};
 
@@ -93,7 +93,7 @@
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
 			key-positions = <3 14 16 25>;
-			layers = <BASE>
+			layers = <BASE>;
 			bindings = <&to GAME>;
 		};
 		compatible = "zmk,combos";
@@ -101,7 +101,7 @@
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
 			key-positions = <2 4>;
-			layers = <BASE NUM NAV>
+			layers = <BASE NUM NAV>;
 			bindings = <&copy>;
 		};
 		compatible = "zmk,combos";
@@ -109,7 +109,7 @@
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
 			key-positions = <14 16>;
-			layers = <BASE NUM NAV>
+			layers = <BASE NUM NAV>;
 			bindings = <&paste>;
 		};
 		compatible = "zmk,combos";
@@ -117,7 +117,7 @@
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
 			key-positions = <26 28>;
-			layers = <BASE NUM NAV>
+			layers = <BASE NUM NAV>;
 			bindings = <&cut>;
 		};
 		compatible = "zmk,combos";
@@ -125,7 +125,7 @@
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
 			key-positions = <13 16>;
-			layers = <BASE NUM NAV>
+			layers = <BASE NUM NAV>;
 			bindings = <&undo>;
 		};
 		compatible = "zmk,combos";
@@ -133,7 +133,7 @@
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
 			key-positions = <19 22>;
-			layers = <BASE NUM NAV>
+			layers = <BASE NUM NAV>;
 			bindings = <&redo>;
 		};
 		compatible = "zmk,combos";
@@ -141,7 +141,7 @@
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
 			key-positions = <15 16>;
-			layers = <BASE NUM>
+			layers = <BASE NUM>;
 			bindings = <&parles>;
 		};
 		compatible = "zmk,combos";
@@ -149,7 +149,7 @@
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
 			key-positions = <19 20>;
-			layers = <BASE NUM>
+			layers = <BASE NUM>;
 			bindings = <&pargre>;
 		};
 		compatible = "zmk,combos";
@@ -157,7 +157,7 @@
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
 			key-positions = <3 4>;
-			layers = <BASE NUM>
+			layers = <BASE NUM>;
 			bindings = <&kp MINUS>;
 		};
 	};
