@@ -3,28 +3,29 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
-#include <dt-bindings/zmk/pointing.h>
-
 
 #define BASE 0
-#define NUM 1
+#define FUN 1
 #define NAV 2
-#define FUN 3
-#define MAC 4
+#define SYM 3
+#define NUM 4
 #define SYS 5
 #define GAME 6
-#define GFUN 7
+#define GUN 7
 
 #define XXX &none
 #define ___ &trans
 
+#define SMART_NUM &smart_num NUM NUM
+#define SMART_NAV &smart_nav NAV NAV
+
 &sk {
-	release-after-ms = <500>;
+	release-after-ms = <1000>;
 	quick-release;
 };
 
 &sl {
-	release-after-ms = <500>;
+	release-after-ms = <1000>;
 };
 	
 / {
@@ -32,7 +33,7 @@
 		smart_num: number_layer_hold_tap {
 			compatible = "zmk,behavior-hold-tap";
 			#binding-cells = <2>;
-            flavor = "tap-preferred";
+            flavor = "hold-preferred";
             tapping-term-ms = <200>;
 			bindings = <&mo>, <&num_word>;
 		};
@@ -45,21 +46,30 @@
 		smart_nav: navigation_layer_hold_tap {
 			compatible = "zmk,behavior-hold-tap";
 			#binding-cells = <2>;
-            flavor = "tap-preferred";
+            flavor = "hold-preferred";
             tapping-term-ms = <200>;
 			bindings = <&mo>, <&nav_word>;
 		};
-		shicap: stickyshift_capsword {
+		mota: mod_tap {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+			quick-tap-ms = <200>;
+			retro-tap;
+			bindings = <&kp>, <&kp>;
+		};
+		lshicap: left_stickyshift_capsword {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&sk LSHFT>, <&caps_word>;
-            mods = <MOD_LSFT>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
         };
-		bacdel: backspace_delete {
+		rshicap: right_stickyshift_capsword {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&sk BSPC>, <&kp DEL>;
-            mods = <MOD_LSFT>;
+            bindings = <&sk RSHFT>, <&caps_word>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 		comsem: comma_semicolon {
             compatible = "zmk,behavior-mod-morph";
@@ -79,18 +89,6 @@
             bindings = <&kp QMARK>, <&kp EXCL>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
-		parles: leftparenthesis_lessthan {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp LPAR>, <&kp LT>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-		pargre: rightparenthesis_greaterthan {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp RPAR>, <&kp GT>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
     };
 
 	combos {
@@ -102,7 +100,6 @@
 			layers = <GAME>;
 			bindings = <&to BASE>;
 		};
-
 		combo_to_game_layer {
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
@@ -110,7 +107,6 @@
 			layers = <BASE>;
 			bindings = <&to GAME>;
 		};
-		compatible = "zmk,combos";
 		combo_copy {
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
@@ -118,7 +114,6 @@
 			layers = <BASE NUM NAV>;
 			bindings = <&copy>;
 		};
-		compatible = "zmk,combos";
 		combo_paste {
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
@@ -126,7 +121,6 @@
 			layers = <BASE NUM NAV>;
 			bindings = <&paste>;
 		};
-		compatible = "zmk,combos";
 		combo_cut {
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
@@ -134,45 +128,26 @@
 			layers = <BASE NUM NAV>;
 			bindings = <&cut>;
 		};
-		compatible = "zmk,combos";
 		combo_undo {
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
-			key-positions = <13 16>;
+			key-positions = <7 9>;
 			layers = <BASE NUM NAV>;
 			bindings = <&undo>;
 		};
-		compatible = "zmk,combos";
+		combo_find {
+			timeout-ms = <50>;
+			require-prior-idle-ms = <100>;
+			key-positions = <19 21>;
+			layers = <BASE NUM NAV>;
+			bindings = <&find>;
+		};
 		combo_redo {
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
-			key-positions = <19 22>;
+			key-positions = <31 33>;
 			layers = <BASE NUM NAV>;
 			bindings = <&redo>;
-		};
-		compatible = "zmk,combos";
-		combo_parles {
-			timeout-ms = <50>;
-			require-prior-idle-ms = <100>;
-			key-positions = <15 16>;
-			layers = <BASE NUM>;
-			bindings = <&parles>;
-		};
-		compatible = "zmk,combos";
-		combo_pargre {
-			timeout-ms = <50>;
-			require-prior-idle-ms = <100>;
-			key-positions = <19 20>;
-			layers = <BASE NUM>;
-			bindings = <&pargre>;
-		};
-		compatible = "zmk,combos";
-		combo_hyphen {
-			timeout-ms = <50>;
-			require-prior-idle-ms = <100>;
-			key-positions = <3 4>;
-			layers = <BASE NUM>;
-			bindings = <&kp MINUS>;
 		};
 	};
 	
@@ -213,6 +188,15 @@
                 , <&macro_release &kp LCTRL>
                 ;
         };
+        find: CTRL_F {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp F>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
         redo: CTRL_Y {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -222,40 +206,57 @@
                 , <&macro_release &kp LCTRL>
                 ;
         };
+        top: CTRL_HOME {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp HOME>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
+		bottom: CTRL_END {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp END>
+                , <&macro_release &kp LCTRL>
+                ;
+		};
+		prev_word: CTRL_LEFT {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp LEFT>
+                , <&macro_release &kp LCTRL>
+                ;
+		};
+		next_word: CTRL_RIGHT {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp RIGHT>
+                , <&macro_release &kp LCTRL>
+                ;
+		};
 	};
 };
 
 / {
         keymap {
                 compatible = "zmk,keymap";
-
                 base_layer {
                         display-name = "Base";
                         bindings = <
-	&mt LALT ESC &kp Q &kp W &kp E &kp R &kp T &kp Y &kp U &kp I &kp O &kp P &mt RALT TAB
-	&bacdel &kp A &kp S &kp D &kp F &kp G &kp H &kp J &kp K &kp L &kp SQT &kp ENTER
-	&kp LCTRL &kp Z &kp X &kp C &kp V &kp B &kp N &kp M &comsem &dotcol &queexc &kp RCTRL
-    &sl MAC &smart_num NUM NUM &shicap &kp SPACE &smart_nav NAV NAV &sl FUN
+	&mota LALT TAB &kp Q &kp W &kp E &kp R &kp T &kp Y &kp U &kp I &kp O &kp P &mota RALT ESC
+	&mota LCTRL DEL &kp A &kp S &kp D &kp F &kp G &kp H &kp J &kp K &kp L &kp SQT &mota RCTRL RET
+	&lshicap &kp Z &kp X &kp C &kp V &kp B &kp N &kp M &comsem &dotcol &queexc &rshicap
+    SMART_NAV SMART_NUM &kp BSPC &kp SPACE &sl SYM &sl FUN
                         >;
                 };
-				number_layer {
-                        display-name = "Num";
-                        bindings = <
-	___ XXX &kp N1 &kp N2 &kp N3 &kp KP_MINUS &kp KP_PLUS &kp KP_N1 &kp KP_N2 &kp KP_N3 XXX ___
-	___ &kp N0 &kp N4 &kp N5 &kp N6 &kp KP_ENTER &kp KP_DOT &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp KP_N0 ___
-	___ XXX &kp N7 &kp N8 &kp N9 &kp KP_SLASH &kp KP_MULTIPLY &kp KP_N7 &kp KP_N8 &kp KP_N9 XXX ___
-	___ ___ ___ ___ &kp RGUI ___
-                        >;				
-                };
-				navigation_layer {
-                        display-name = "Nav";
-                        bindings = <
-	___ XXX &kp PG_UP &kp UP &kp PG_DN XXX XXX &msc SCRL_UP &mmv MOVE_UP &msc SCRL_DOWN XXX ___
-	___ &kp HOME &kp LEFT &kp DOWN &kp RIGHT &kp END &msc SCRL_LEFT &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &msc SCRL_RIGHT ___
-	___ XXX &mkp MB4 &kp DEL &mkp MB5 XXX XXX &mkp MB1 &mkp MB3 &mkp MB3 XXX ___
-	___ &kp LGUI ___ ___ ___ ___
-                        >;
-                };				
 				function_layer {
                         display-name = "Fun";
                         bindings = <
@@ -265,21 +266,39 @@
 	&mo SYS ___ ___ ___ ___ ___
                         >;
 				};
-				macro_layer {
-                        display-name = "Mac";
+				navigation_layer {
+                        display-name = "Nav";
                         bindings = <
-	___ XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX ___
-	___ XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX ___
-	___ XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX ___
-	___ XXX XXX XXX XXX &mo SYS
+	___ XXX &kp PG_UP &kp UP &kp PG_DN XXX XXX &msc SCRL_UP &mmv MOVE_UP &msc SCRL_DOWN XXX ___
+	___ &kp HOME &kp LEFT &kp DOWN &kp RIGHT &kp END &msc SCRL_LEFT &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &msc SCRL_RIGHT ___
+	___ &top &prev_word &PSCRN &next_word &bottom &mkp MB4 &mkp MB1 &mkp MB3 &mkp MB2 &mkp MB5 ___
+	___ ___ ___ ___ ___ &mo SYS
+                        >;
+                };				
+				symbol_layer {
+                        display-name = "Sym";
+                        bindings = <
+	___ &kp GRAVE &kp DLLR &kp AT &kp HASH XXX XXX &kp PIPE &kp PRCNT &kp CARET &kp TILDE ___
+	___ &kp LBRC &kp LT &kp MINUS &kp UNDER XXX XXX &kp AMPS &kp EQUAL &kp GT &kp RBRC ___
+	___ &kp LBKT &kp LPAR &kp STAR &kp FSLH XXX XXX &kp BSLH &kp PLUS &kp RPAR &kp RBKT ___
+	___ &kp LGUI ___ ___ ___ ___
                         >;
 				};
+				number_layer {
+                        display-name = "Num";
+                        bindings = <
+	___ XXX &kp N1 &kp N2 &kp N3 XXX XXX &kp KP_N1 &kp KP_N2 &kp KP_N3 XXX ___
+	___ &kp N0 &kp N4 &kp N5 &kp N6 &kp KP_MINUS &kp KP_PLUS &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp KP_N0 &mota KP_ENTER
+	___ &kp COMMA &kp N7 &kp N8 &kp N9 &kp KP_SLASH &kp KP_MULTIPLY &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_DOT ___
+	___ ___ ___ ___ &kp RGUI ___
+                        >;				
+                };
 				system_layer {
                         display-name = "Sys";
                         bindings = <
-	___ XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX ___
-	___ &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 XXX XXX &bt BT_SEL 4 &out OUT_BLE &out OUT_USB &bt BT_CLR ___
-	___ XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX ___
+	XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX
+	XXX &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 XXX XXX &bt BT_SEL 4 &out OUT_BLE &out OUT_USB &bt BT_CLR XXX
+	XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX
 	___ XXX XXX XXX XXX ___
                         >;
 				};
@@ -289,11 +308,11 @@
 	&kp ESC &kp T &kp Q &kp W &kp E &kp R &kp Y &kp U &kp I &kp O &kp P XXX
 	&kp TAB &kp G &kp A &kp S &kp D &kp F &kp H &kp J &kp K &kp L &kp SEMI XXX
 	&kp LCTRL &kp LSHFT &kp Z &kp X &kp C &kp V &kp N &kp M &kp COMMA &kp DOT &kp FSLH XXX
-	&sl GFUN &kp LALT &kp SPACE &kp B XXX XXX
+	&mo GUN &kp LALT &kp SPACE &kp B XXX XXX
                         >;
                 };
                 game_function_layer {
-                        display-name = "G Fun";
+                        display-name = "Gun";
                         bindings = <
 	&kp PSCRN &kp F1 &kp F2 &kp F3 &kp F4 &kp F21 XXX XXX XXX XXX XXX XXX
 	&kp LGUI &kp F5 &kp F6 &kp F7 &kp F8 &kp F22 XXX XXX XXX XXX XXX XXX
