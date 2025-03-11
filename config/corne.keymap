@@ -19,20 +19,15 @@
 #define ___ &trans
 
 &sk {
-	release-after-ms = <1000>;
+	release-after-ms = <500>;
 	quick-release;
-	ignore-modifiers;
+};
+
+&sl {
+	release-after-ms = <500>;
 };
 	
 / {
-	conditional_layers {
-		compatible = "zmk,conditional-layers";
-		tri_layer {
-			if-layers = <FUN MAC>;
-			then-layer = <SYS>;
-        };
-    };
-
 	behaviors {
 		nav_word: nav_word {
 			compatible = "zmk,behavior-auto-layer";
@@ -44,6 +39,12 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&sk LSHFT>, <&caps_word>;
+            mods = <MOD_LSFT>;
+        };
+		bacdel: backspace_delete {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&sk BSPC>, <&kp DEL>;
             mods = <MOD_LSFT>;
         };
 		comsem: comma_semicolon {
@@ -84,27 +85,23 @@
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
 			key-positions = <13 14 15 16>;
+			layers = <GAME>
 			bindings = <&to BASE>;
 		};
-		compatible = "zmk,combos";
+
 		combo_to_game_layer {
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
 			key-positions = <3 14 16 25>;
+			layers = <BASE>
 			bindings = <&to GAME>;
-		};
-		compatible = "zmk,combos";
-		combo_backspace {
-			timeout-ms = <50>;
-			require-prior-idle-ms = <100>;
-			key-positions = <38 39>;
-			bindings = <&kp BSPC>;
 		};
 		compatible = "zmk,combos";
 		combo_copy {
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
 			key-positions = <2 4>;
+			layers = <BASE NUM NAV>
 			bindings = <&copy>;
 		};
 		compatible = "zmk,combos";
@@ -112,6 +109,7 @@
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
 			key-positions = <14 16>;
+			layers = <BASE NUM NAV>
 			bindings = <&paste>;
 		};
 		compatible = "zmk,combos";
@@ -119,6 +117,7 @@
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
 			key-positions = <26 28>;
+			layers = <BASE NUM NAV>
 			bindings = <&cut>;
 		};
 		compatible = "zmk,combos";
@@ -126,6 +125,7 @@
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
 			key-positions = <13 16>;
+			layers = <BASE NUM NAV>
 			bindings = <&undo>;
 		};
 		compatible = "zmk,combos";
@@ -133,34 +133,15 @@
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
 			key-positions = <19 22>;
+			layers = <BASE NUM NAV>
 			bindings = <&redo>;
-		};
-		compatible = "zmk,combos";
-		combo_enter {
-			timeout-ms = <50>;
-			require-prior-idle-ms = <100>;
-			key-positions = <7 9>;
-			bindings = <&kp RET>;
-		};
-		compatible = "zmk,combos";
-		combo_tab {
-			timeout-ms = <50>;
-			require-prior-idle-ms = <100>;
-			key-positions = <19 21>;
-			bindings = <&kp TAB>;
-		};
-		compatible = "zmk,combos";
-		combo_escape {
-			timeout-ms = <50>;
-			require-prior-idle-ms = <100>;
-			key-positions = <31 33>;
-			bindings = <&kp ESC>;
 		};
 		compatible = "zmk,combos";
 		combo_parles {
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
 			key-positions = <15 16>;
+			layers = <BASE NUM>
 			bindings = <&parles>;
 		};
 		compatible = "zmk,combos";
@@ -168,6 +149,7 @@
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
 			key-positions = <19 20>;
+			layers = <BASE NUM>
 			bindings = <&pargre>;
 		};
 		compatible = "zmk,combos";
@@ -175,6 +157,7 @@
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
 			key-positions = <3 4>;
+			layers = <BASE NUM>
 			bindings = <&kp MINUS>;
 		};
 	};
@@ -235,10 +218,10 @@
                 base_layer {
                         display-name = "Base";
                         bindings = <
-	&kp LALT &kp Q &kp W &kp E &kp R &kp T &kp Y &kp U &kp I &kp O &kp P &kp RALT
-	&kp BSPC &kp A &kp S &kp D &kp F &kp G &kp H &kp J &kp K &kp L &kp SQT &kp BSPC
+	&mt LALT ESC &kp Q &kp W &kp E &kp R &kp T &kp Y &kp U &kp I &kp O &kp P &mt RALT TAB
+	&bacdel &kp A &kp S &kp D &kp F &kp G &kp H &kp J &kp K &kp L &kp SQT &kp ENTER
 	&kp LCTRL &kp Z &kp X &kp C &kp V &kp B &kp N &kp M &comsem &dotcol &queexc &kp RCTRL
-    &sl FUN &num_word NUM &shicap &kp SPACE &nav_word NAV &sl MAC
+    &sl MAC &lt NUM num_word NUM &shicap &kp SPACE &lt NAV nav_word NAV &sl FUN
                         >;
                 };
 				number_layer {
@@ -265,7 +248,7 @@
 	___ &kp F1 &kp F2 &kp F3 &kp F4 XXX XXX &kp F13 &kp F14 &kp F15 &kp F16 ___ 
 	___ &kp F5 &kp F6 &kp F7 &kp F8 XXX XXX &kp F17 &kp F18 &kp F19 &kp F20 ___
 	___ &kp F9 &kp F10 &kp F11 &kp F12 XXX XXX &kp F21 &kp F22 &kp F23 &kp F24 ___
-	___ ___ ___ ___ ___ ___
+	&mo SYS ___ ___ ___ ___ ___
                         >;
 				};
 				macro_layer {
@@ -274,7 +257,7 @@
 	___ XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX ___
 	___ XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX ___
 	___ XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX ___
-	___ XXX XXX XXX XXX ___
+	___ XXX XXX XXX XXX &mo SYS
                         >;
 				};
 				system_layer {
@@ -292,7 +275,7 @@
 	&kp ESC &kp T &kp Q &kp W &kp E &kp R &kp Y &kp U &kp I &kp O &kp P XXX
 	&kp TAB &kp G &kp A &kp S &kp D &kp F &kp H &kp J &kp K &kp L &kp SEMI XXX
 	&kp LCTRL &kp LSHFT &kp Z &kp X &kp C &kp V &kp N &kp M &kp COMMA &kp DOT &kp FSLH XXX
-	&mo GFUN &kp LALT &kp SPACE &kp B XXX XXX
+	&sl GFUN &kp LALT &kp SPACE &kp B XXX XXX
                         >;
                 };
                 game_function_layer {
