@@ -271,7 +271,7 @@
                         bindings = <
 	___ XXX &kp PG_UP &kp UP &kp PG_DN XXX XXX &msc SCRL_UP &mmv MOVE_UP &msc SCRL_DOWN XXX ___
 	___ &kp HOME &kp LEFT &kp DOWN &kp RIGHT &kp END &msc SCRL_LEFT &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &msc SCRL_RIGHT ___
-	___ &top_doc &prev_word &kp PSCRN &next_word &bottom_doc &mkp MB4 &mkp MB1 &mkp MB3 &mkp MB2 &mkp MB5 ___
+	___ XXX XXX &kp PSCRN XXX XXX &mkp MB4 &mkp MB1 &mkp MB3 &mkp MB2 &mkp MB5 ___
 	___ ___ ___ ___ ___ &mo SYS
                         >;
                 };				
