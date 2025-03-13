@@ -447,7 +447,7 @@
 			require-prior-idle-ms = <100>;
 			key-positions = <37 40>;
 			layers = <FUN>;
-			bindings = <PAUSE_BREAK>;
+			bindings = <&kp PAUSE_BREAK>;
 		};
 		combo_system_layer {
 			timeout-ms = <50>;
