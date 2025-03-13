@@ -484,14 +484,14 @@
 			require-prior-idle-ms = <100>;
 			key-positions = <15 38>;
 			layers = <BASE NUM NAV FUN>;
-			bindings = <&lscw>;
+			bindings = <&skql LSHFT>;
 		};
 		combo_right_shift {
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
 			key-positions = <20 39>;
 			layers = <BASE NUM NAV FUN>;
-			bindings = <&rscw>;
+			bindings = <&skql RSHFT>;
 		};
 		combo_caps_word {
 			timeout-ms = <50>;
