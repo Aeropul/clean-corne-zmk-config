@@ -32,7 +32,9 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap &kp LCTRL &kp C>;
+                = <&macro_press &kp LCTRL>
+				, <&macro_tap &kp C>
+                , <&macro_release &kp LCTRL>;
         };
         paste: CTRL_V {
             compatible = "zmk,behavior-macro";
@@ -46,7 +48,9 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap &kp LCTRL &kp X>;
+                = <&macro_press &kp LCTRL>
+				, <&macro_tap &kp X>
+                , <&macro_release &kp LCTRL>;
         };
 		redo: CTRL_SHIFT_Z {
             compatible = "zmk,behavior-macro";
@@ -60,7 +64,9 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap &kp RCTRL &kp RALT &kp TAB>;
+                = <&macro_press &kp RCTRL &kp RSHFT>
+				, <&macro_tap &kp TAB>
+                , <&macro_release &kp RSHFT &kp RCTRL>;
         };
 		undo: CTRL_Z {
             compatible = "zmk,behavior-macro";
@@ -76,13 +82,17 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap &kp LCTRL &kp HOME>;
+                = <&macro_press &kp LCTRL>
+				, <&macro_tap &kp HOME>
+                , <&macro_release &kp LCTRL>;
         };
 		bot_doc: CTRL_END {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap &kp LCTRL &kp END>;
+                = <&macro_press &kp LCTRL>
+				, <&macro_tap &kp END>
+                , <&macro_release &kp LCTRL>;
 		};
 		prev_word: CTRL_LEFT {
             compatible = "zmk,behavior-macro";
@@ -162,8 +172,7 @@
 			compatible = "zmk,behavior-hold-tap";
 			#binding-cells = <2>;
             flavor = "hold-preferred";
-            tapping-term-ms = <150>;
-			hold-while-undecided;
+            tapping-term-ms = <200>;
 			bindings = <&swmo>, <&snmw>;
 		};
 		nav_word: navigation_layer_word {
@@ -176,8 +185,7 @@
 			compatible = "zmk,behavior-hold-tap";
 			#binding-cells = <2>;
             flavor = "hold-preferred";
-            tapping-term-ms = <150>;
-			hold-while-undecided;
+            tapping-term-ms = <200>;
 			bindings = <&swmo>, <&snvw>;
 		};
 		fun_word: function_layer_word {
@@ -190,8 +198,7 @@
 			compatible = "zmk,behavior-hold-tap";
 			#binding-cells = <2>;
             flavor = "hold-preferred";
-            tapping-term-ms = <150>;
-			hold-while-undecided;
+            tapping-term-ms = <200>;
 			bindings = <&swmo>, <&sfnw>;
 		};
 		gun_word: game_function_layer_word {
@@ -204,8 +211,7 @@
 			compatible = "zmk,behavior-hold-tap";
 			#binding-cells = <2>;
             flavor = "hold-preferred";
-            tapping-term-ms = <150>;
-			hold-while-undecided;
+            tapping-term-ms = <200>;
 			bindings = <&kp>, <&gun_word>;
 		};
 
@@ -453,14 +459,14 @@
 			require-prior-idle-ms = <100>;
 			key-positions = <16 38>;
 			layers = <BASE NUM NAV FUN>;
-			bindings = <&skqr LCTRL>;
+			bindings = <&skql LCTRL>;
 		};
 		combo_right_control {
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
 			key-positions = <19 39>;
 			layers = <BASE NUM NAV FUN>;
-			bindings = <&skqr RCTRL>;
+			bindings = <&skql RCTRL>;
 		};
 		combo_left_shift {
 			timeout-ms = <50>;
@@ -518,11 +524,11 @@
 			layers = <BASE NUM NAV FUN>;
 			bindings = <&skql RGUI>;
 		};
-		combo_game_left_gui {
+		combo_game_gui {
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
 			key-positions = <14 15 16>;
-			layers = <GAME GUN>;
+			layers = <GAME>;
 			bindings = <&kp LGUI>;
 		};
 
@@ -571,13 +577,6 @@
 		};
 
 	//	KEY PRESS COMBOS
-		combo_escape {
-			timeout-ms = <50>;
-			require-prior-idle-ms = <100>;
-			key-positions = <3 14 16>;
-			layers = <BASE NUM NAV FUN GAME GUN>;
-			bindings = <&kp ESC>;
-		};
 		combo_tab {
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
@@ -585,12 +584,33 @@
 			layers = <BASE NUM NAV FUN>;
 			bindings = <&kp TAB>;
 		};
-		combo_enter {
+		combo_left_enter {
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
 			key-positions = <3 14>;
 			layers = <BASE NUM NAV FUN>;
+			bindings = <&kp DEL>;
+		};
+		combo_right_enter {
+			timeout-ms = <50>;
+			require-prior-idle-ms = <100>;
+			key-positions = <8 19>;
+			layers = <BASE NUM NAV FUN>;
 			bindings = <&kp ENTER>;
+		};
+		combo_escape {
+			timeout-ms = <50>;
+			require-prior-idle-ms = <100>;
+			key-positions = <8 21>;
+			layers = <BASE NUM NAV FUN>;
+			bindings = <&kp ESC>;
+		};
+		combo_game_escape {
+			timeout-ms = <50>;
+			require-prior-idle-ms = <100>;
+			key-positions = <3 14 16>;
+			layers = <GAME GUN>;
+			bindings = <&kp ESC>;
 		};
 	};
 };
@@ -610,8 +630,8 @@
 				number_layer {
                         display-name = "Num";
                         bindings = <
-	XXX XXX &kp N7 &kp N8 &kp N9 &kp KP_SLASH &kp KP_MULTIPLY &kp KP_N7 &kp KP_N8 &kp KP_N9 XXX XXX
-	XXX &kp N0 &kp N4 &kp N5 &kp N6 &kp DEL &kp KP_ENTER &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp KP_N0 XXX
+	XXX &kp DEL &kp N7 &kp N8 &kp N9 &kp KP_SLASH &kp KP_MULTIPLY &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp ESC XXX
+	XXX &kp N0 &kp N4 &kp N5 &kp N6 &kp BSPC &kp KP_ENTER &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp KP_N0 XXX
 	XXX &kp COMMA &kp N1 &kp N2 &kp N3 &kp KP_MINUS &kp KP_PLUS &kp KP_N1 &kp KP_N2 &kp KP_N3 &kp KP_DOT XXX
 	XXX &kp PAUSE_BREAK ___ ___ SMART_NAV XXX
                         >;
