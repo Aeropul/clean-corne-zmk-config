@@ -64,9 +64,9 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_press &kp RCTRL &kp RSHFT>
+                = <&macro_press &kp RCTRL &kp RALT>
 				, <&macro_tap &kp TAB>
-                , <&macro_release &kp RSHFT &kp RCTRL>;
+                , <&macro_release &kp RALT &kp RCTRL>;
         };
 		undo: CTRL_Z {
             compatible = "zmk,behavior-macro";
@@ -172,7 +172,7 @@
 			compatible = "zmk,behavior-hold-tap";
 			#binding-cells = <2>;
             flavor = "hold-preferred";
-            tapping-term-ms = <200>;
+            tapping-term-ms = <175>;
 			bindings = <&swmo>, <&snmw>;
 		};
 		nav_word: navigation_layer_word {
@@ -185,7 +185,7 @@
 			compatible = "zmk,behavior-hold-tap";
 			#binding-cells = <2>;
             flavor = "hold-preferred";
-            tapping-term-ms = <200>;
+            tapping-term-ms = <175>;
 			bindings = <&swmo>, <&snvw>;
 		};
 		fun_word: function_layer_word {
@@ -198,20 +198,19 @@
 			compatible = "zmk,behavior-hold-tap";
 			#binding-cells = <2>;
             flavor = "hold-preferred";
-            tapping-term-ms = <200>;
+            tapping-term-ms = <175>;
 			bindings = <&swmo>, <&sfnw>;
 		};
 		gun_word: game_function_layer_word {
 			compatible = "zmk,behavior-auto-layer";
 			#binding-cells = <1>;
 			continue-list = <0>;
-			ignore-modifiers;
 		};
 		smart_gun: game_function_layer_hold_tap {
 			compatible = "zmk,behavior-hold-tap";
 			#binding-cells = <2>;
             flavor = "hold-preferred";
-            tapping-term-ms = <200>;
+            tapping-term-ms = <175>;
 			bindings = <&kp>, <&gun_word>;
 		};
 
@@ -589,7 +588,7 @@
 			require-prior-idle-ms = <100>;
 			key-positions = <3 14>;
 			layers = <BASE NUM NAV FUN>;
-			bindings = <&kp DEL>;
+			bindings = <&kp ENTER>;
 		};
 		combo_right_enter {
 			timeout-ms = <50>;
@@ -678,7 +677,7 @@
 	XXX &kp F12 &kp F7 &kp F8 &kp F9 &kp F24 XXX XXX XXX XXX XXX XXX
 	XXX &kp F11 &kp F4 &kp F5 &kp F6 &kp F23 XXX XXX XXX XXX XXX XXX
 	XXX &kp F10 &kp F1 &kp F2 &kp F3 &kp F22 XXX XXX XXX XXX XXX XXX
-	XXX &kp ENTER &kp RALT XXX XXX XXX
+	XXX &kp T &kp ENTER XXX XXX XXX
                         >;
                 };
 		};
