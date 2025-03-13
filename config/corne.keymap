@@ -21,7 +21,7 @@
 #define SMART_GUN &smart_gun LALT GUN
 
 &caps_word {
-	continue-list = <UNDER MINUS SQT DEL BSPC>;
+	continue-list = <UNDER MINUS SQT BSPC>;	
 };
 
 / {
@@ -162,7 +162,7 @@
 			compatible = "zmk,behavior-hold-tap";
 			#binding-cells = <2>;
             flavor = "hold-preferred";
-            tapping-term-ms = <100>;
+            tapping-term-ms = <150>;
 			hold-while-undecided;
 			bindings = <&swmo>, <&snmw>;
 		};
@@ -176,7 +176,7 @@
 			compatible = "zmk,behavior-hold-tap";
 			#binding-cells = <2>;
             flavor = "hold-preferred";
-            tapping-term-ms = <100>;
+            tapping-term-ms = <150>;
 			hold-while-undecided;
 			bindings = <&swmo>, <&snvw>;
 		};
@@ -190,7 +190,7 @@
 			compatible = "zmk,behavior-hold-tap";
 			#binding-cells = <2>;
             flavor = "hold-preferred";
-            tapping-term-ms = <100>;
+            tapping-term-ms = <150>;
 			hold-while-undecided;
 			bindings = <&swmo>, <&sfnw>;
 		};
@@ -204,7 +204,7 @@
 			compatible = "zmk,behavior-hold-tap";
 			#binding-cells = <2>;
             flavor = "hold-preferred";
-            tapping-term-ms = <100>;
+            tapping-term-ms = <150>;
 			hold-while-undecided;
 			bindings = <&kp>, <&gun_word>;
 		};
@@ -415,7 +415,7 @@
 			timeout-ms = <50>;
 			require-prior-idle-ms = <100>;
 			key-positions = <13 14 15 16>;
-			layers = <GAME FUN>;
+			layers = <GAME GUN>;
 			bindings = <&swto BASE>;
 		};
 		combo_function_layer {
@@ -631,7 +631,7 @@
 	XXX &kp F12 &kp F7 &kp F8 &kp F9 XXX XXX &kp F19 &kp F20 &kp F21 &kp F24 XXX
 	XXX &kp F11 &kp F4 &kp F5 &kp F6 XXX XXX &kp F16 &kp F17 &kp F18 &kp F23 XXX
 	XXX &kp F10 &kp F1 &kp F2 &kp F3 XXX XXX &kp F13 &kp F14 &kp F15 &kp F22 XXX
-	XXX XXX ___ ___ XXX XXX
+	XXX SMART_NUM ___ ___ SMART_NAV XXX
                         >;
 				};
 				system_layer {
@@ -658,7 +658,7 @@
 	XXX &kp F12 &kp F7 &kp F8 &kp F9 &kp F24 XXX XXX XXX XXX XXX XXX
 	XXX &kp F11 &kp F4 &kp F5 &kp F6 &kp F23 XXX XXX XXX XXX XXX XXX
 	XXX &kp F10 &kp F1 &kp F2 &kp F3 &kp F22 XXX XXX XXX XXX XXX XXX
-	XXX &kp ENTER &kp LALT XXX XXX XXX
+	XXX &kp ENTER &kp RALT XXX XXX XXX
                         >;
                 };
 		};
